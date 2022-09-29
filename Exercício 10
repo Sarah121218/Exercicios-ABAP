@@ -1,0 +1,47 @@
+REPORT zz_exerc10_35.
+
+DATA: v_adicao        TYPE c VALUE '+',
+      v_subtracao     TYPE c VALUE '-',
+      v_divisao       TYPE c VALUE '/',
+      v_multiplicacao TYPE c VALUE '*',
+      v_resto         TYPE c VALUE '%',
+      v_resultado     TYPE p DECIMALS 2.
+
+PARAMETERS: p_op     TYPE c,
+            p_valor1 TYPE i,
+            p_valor2 TYPE i.
+
+INITIALIZATION.
+  MESSAGE i017(z35).
+
+START-OF-SELECTION.
+
+  IF p_op = v_adicao.
+    v_resultado = p_valor1 + p_valor2.
+    PERFORM f_exibe_msg.
+  ELSEIF p_op = v_subtracao.
+    v_resultado = p_valor1 - p_valor2.
+    PERFORM f_exibe_msg.
+  ELSEIF p_op = v_divisao.
+    v_resultado = p_valor1 / p_valor2.
+    PERFORM f_exibe_msg.
+  ELSEIF p_op = v_multiplicacao.
+    v_resultado = p_valor1 * p_valor2.
+    PERFORM f_exibe_msg.
+  ELSEIF p_op = v_resto.
+    v_resultado = p_valor1 MOD p_valor2.
+    PERFORM f_exibe_msg.
+  ELSE.
+    MESSAGE i014(z35).
+  ENDIF.
+*&---------------------------------------------------------------------*
+*&      Form  F_EXIBE_MSG
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_exibe_msg .
+  MESSAGE i018(z35) WITH v_resultado.
+ENDFORM.
