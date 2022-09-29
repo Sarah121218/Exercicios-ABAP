@@ -1,0 +1,17 @@
+REPORT zz_exerc13_35.
+
+DATA: v_cont TYPE i.
+
+PARAMETERS: p_num TYPE i.
+
+START-OF-SELECTION.
+
+  IF p_num > 0.
+    v_cont = 1.
+    WHILE v_cont <= p_num.
+      WRITE: v_cont.
+      v_cont = v_cont * 2.
+    ENDWHILE.
+  ELSE.
+    MESSAGE e019(z35).
+  ENDIF.
