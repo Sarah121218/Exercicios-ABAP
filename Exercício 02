@@ -1,0 +1,74 @@
+REPORT zz_exerc02_35.
+
+
+DATA: v_resultado TYPE char11,
+      v_valor_a   TYPE i,
+      v_valor_b   TYPE i,
+      v_valor_c   TYPE i.
+
+START-OF-SELECTION.
+
+  v_valor_a = 3.
+  v_valor_b = 2.
+  v_valor_c = 5.
+
+*A
+  IF v_valor_a > v_valor_b.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*B
+  IF v_valor_b = v_valor_a.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*C
+  IF v_valor_a >= v_valor_b AND v_valor_c <> 5.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*D
+  IF v_valor_b < v_valor_a OR v_valor_a = 3.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*E
+  IF v_valor_a > v_valor_b OR v_valor_a = 3.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*F
+  IF v_valor_c <= 7 AND v_valor_b > 0 AND v_valor_c > v_valor_a.
+    v_resultado = 'Verdadeiro'.
+  ELSE.
+    v_resultado = 'Falso'.
+  ENDIF.
+  PERFORM f_mensagem.
+
+*&---------------------------------------------------------------------*
+*&      Form  F_MENSAGEM_V
+*&---------------------------------------------------------------------*
+*       Mensagem para o resultado
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_mensagem .
+  MESSAGE i001(z35) WITH v_resultado.
+
+ENDFORM.
