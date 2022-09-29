@@ -1,0 +1,10 @@
+REPORT zz_exerc11_35.
+
+DATA: v_num TYPE i VALUE '1'.
+
+START-OF-SELECTION.
+
+  WHILE v_num <= 100.
+    WRITE v_num.
+    v_num = v_num + 1.
+  ENDWHILE.
