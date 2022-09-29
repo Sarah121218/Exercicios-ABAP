@@ -1,0 +1,31 @@
+REPORT zz_exerc18_35.
+
+DATA: v_pr_hr_ex TYPE p DECIMALS 2,
+      v_vl_tt_ex TYPE p DECIMALS 2,
+      v_hr_ex_tr TYPE p DECIMALS 2,
+      v_sl       TYPE p DECIMALS 2.
+
+PARAMETERS: p_hr_tr TYPE i,
+            p_sl_hr TYPE p DECIMALS 2.
+
+CONSTANTS: c_jrn TYPE i VALUE 40.
+
+
+START-OF-SELECTION.
+
+
+  IF p_hr_tr > 160.
+
+    v_pr_hr_ex  = p_sl_hr + ( p_sl_hr * ( 50 / 100 ) ).
+    v_hr_ex_tr    = p_hr_tr - 160.
+    v_vl_tt_ex = v_pr_hr_ex * v_hr_ex_tr.
+    v_sl     = ( ( 160 * p_sl_hr )  + v_vl_tt_ex ).
+    MESSAGE i026(z35) WITH v_hr_ex_tr.
+    MESSAGE i025(z35) WITH v_vl_tt_ex.
+    MESSAGE i027(z35) WITH v_sl.
+
+  ELSE.
+    v_sl     = ( p_hr_tr * p_sl_hr ).
+    MESSAGE i027(z35) WITH v_sl.
+    MESSAGE i028(z35).
+  ENDIF.
