@@ -1,0 +1,32 @@
+REPORT zz_exerc4_35.
+
+DATA: v_media TYPE p DECIMALS 2.
+
+PARAMETERS: p_nota1 TYPE p DECIMALS 2,
+            p_nota2 TYPE p DECIMALS 2,
+            p_nota3 TYPE p DECIMALS 2,
+            p_nota4 TYPE p DECIMALS 2.
+
+START-OF-SELECTION.
+
+  PERFORM f_calc_media USING p_nota1
+                             p_nota2
+                             p_nota3
+                             p_nota4.
+*&---------------------------------------------------------------------*
+*&      Form  F_CALC_MEDIA
+*&---------------------------------------------------------------------*
+*       Cálculo da Média
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_calc_media USING p_nota1
+                        p_nota2
+                        p_nota3
+                        p_nota4.
+
+  v_media = ( p_nota1 * p_nota2 * p_nota3 * p_nota4 ) / 4.
+  MESSAGE i005(z35) WITH v_media.
+
+ENDFORM.
