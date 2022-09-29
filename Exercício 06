@@ -1,0 +1,23 @@
+REPORT zz_exerc06_35.
+
+PARAMETERS: p_valor TYPE p DECIMALS 2.
+
+START-OF-SELECTION.
+
+  PERFORM f_valor.
+
+*&---------------------------------------------------------------------*
+*&      Form  F_VALOR
+*&---------------------------------------------------------------------*
+*       Form para ver se o número é maior ou menor que 3.
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_valor .
+  IF p_valor < 3.
+    MESSAGE i008(z35) WITH p_valor.
+  ELSE.
+    MESSAGE e009(z35).
+  ENDIF.
+ENDFORM.
