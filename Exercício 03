@@ -1,0 +1,24 @@
+REPORT zz_exerc03_35.
+
+DATA: v_at        TYPE p decimals 2.
+
+PARAMETERS:   p_altura TYPE p decimals 2,
+              p_base   TYPE p decimals 2.
+
+START-OF-SELECTION.
+
+  PERFORM f_calc_area USING p_altura
+                            p_base.
+*&---------------------------------------------------------------------*
+*&      Form  F_CALC_AREA
+*&---------------------------------------------------------------------*
+*       Cálculo da área
+*----------------------------------------------------------------------*
+*      -->P_V_ALTURA  text
+*      -->P_V_BASE  text
+*----------------------------------------------------------------------*
+FORM f_calc_area  USING    p_altura
+                           p_base.
+  v_at = ( p_altura * p_base ) / 2.
+  MESSAGE i004(z35) WITH v_at.
+ENDFORM.
