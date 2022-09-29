@@ -1,0 +1,40 @@
+REPORT zz_exerc09_35.
+
+
+DATA: v_calculo     TYPE p DECIMALS 2,
+      v_peso_mulher TYPE p VALUE '62.1',
+      v_peso_homem  TYPE p VALUE '72.7',
+      v_valor       TYPE p VALUE '44.7'.
+
+PARAMETERS: p_sexo   TYPE char1 OBLIGATORY,
+            p_altura TYPE p DECIMALS 2.
+
+CONSTANTS: c_sexo_homem  TYPE c VALUE 'M',
+           c_sexo_mulher TYPE c VALUE 'F'.
+
+INITIALIZATION.
+  MESSAGE i016(z35).
+
+START-OF-SELECTION.
+
+  IF p_sexo = c_sexo_homem.
+    v_calculo = ( v_peso_homem * p_altura ) - 58.
+    PERFORM f_exibe_msg.
+  ELSEIF p_sexo = c_sexo_mulher.
+    v_calculo = ( v_peso_mulher * p_altura ) - v_valor.
+    PERFORM f_exibe_msg.
+  ELSE.
+    MESSAGE e014(z35).
+  ENDIF.
+*&---------------------------------------------------------------------*
+*&      Form  F_EXIBE_MSG
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_exibe_msg .
+  MESSAGE i015(z35) WITH v_calculo.
+
+ENDFORM.
