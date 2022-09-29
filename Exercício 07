@@ -1,0 +1,13 @@
+REPORT zz_exerc07_35.
+
+PARAMETERS: p_vl_a TYPE p DECIMALS 2,
+            p_vl_b TYPE p DECIMALS 2.
+
+
+START-OF-SELECTION.
+
+  IF  p_vl_a > p_vl_b.
+    MESSAGE i010(z35) WITH p_vl_a.
+  ELSE.
+    MESSAGE i010(z35) WITH p_vl_b.
+  ENDIF.
