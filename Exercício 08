@@ -1,0 +1,14 @@
+REPORT zz_exerc08_35.
+
+PARAMETERS: p_valor TYPE i.
+
+
+START-OF-SELECTION.
+
+  IF p_valor IS INITIAL.
+    MESSAGE e011(z35).
+  ELSEIF p_valor MOD 2 EQ 0.
+    MESSAGE i012(z35).
+  ELSE.
+    MESSAGE i013(z35).
+  ENDIF.
