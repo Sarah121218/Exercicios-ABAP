@@ -1,0 +1,13 @@
+REPORT zz_exerc12_35.
+
+DATA: v_tab       TYPE i VALUE '1',
+      v_resultado TYPE i.
+
+PARAMETERS: p_num TYPE i.
+
+START-OF-SELECTION.
+  WHILE v_tab <= 10.
+    v_resultado = p_num * v_tab.
+    WRITE: v_resultado.
+    v_tab = v_tab + 1.
+  ENDWHILE.
