@@ -1,0 +1,194 @@
+REPORT zz_exerc15_35.
+
+DATA: v_rst_soma TYPE i,
+      v_rst_med  TYPE p DECIMALS 2,
+      v_rst_ma   TYPE i,
+      v_rst_me   TYPE i,
+      v_rst_mep  TYPE p DECIMALS 2,
+      v_cont     TYPE i VALUE 0,
+      v_cont2    TYPE i VALUE 0.
+
+PARAMETERS: p_num1 TYPE i,
+            p_num2 TYPE i,
+            p_num3 TYPE i,
+            p_num4 TYPE i,
+            p_num5 TYPE i.
+
+START-OF-SELECTION.
+
+  IF p_num1 < 0 OR p_num2 < 0 OR p_num3 < 0 OR p_num4 < 0 OR p_num5 < 0.
+    MESSAGE e019(z35).
+  ELSE.
+    PERFORM f_contas.
+  ENDIF.
+
+*&---------------------------------------------------------------------*
+*&      Form  F_CONTAS
+*&---------------------------------------------------------------------*
+*       Operações
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_contas .
+  PERFORM f_maior_num.
+  PERFORM f_menor_num.
+  PERFORM f_med_par.
+  v_rst_soma = p_num1 + p_num2 + p_num3 + p_num4 + p_num5.
+  MESSAGE i020(z35) WITH v_rst_soma.
+  v_rst_med = ( p_num1 + p_num2 + p_num3 + p_num4 + p_num5 ) / 5.
+  MESSAGE i021(z35) WITH v_rst_med.
+  v_rst_mep = v_cont / v_cont2.
+  MESSAGE i023(z35) WITH v_rst_mep.
+
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  F_MAIOR_NUM
+*&---------------------------------------------------------------------*
+*       Maior Número
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_maior_num .
+  IF p_num1 > p_num2.
+    IF p_num1 > p_num3.
+      IF p_num1 > p_num4.
+        IF p_num1 > p_num5.
+          v_rst_ma = p_num1.
+          MESSAGE i010(z35) WITH v_rst_ma.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num2 > p_num1.
+    IF p_num2 > p_num3.
+      IF p_num2 > p_num4.
+        IF p_num2 > p_num5.
+          v_rst_ma = p_num2.
+          MESSAGE i010(z35) WITH v_rst_ma.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num3 > p_num1.
+    IF p_num3 > p_num2.
+      IF p_num3 > p_num4.
+        IF p_num3 > p_num5.
+          v_rst_ma = p_num3.
+          MESSAGE i010(z35) WITH v_rst_ma.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num4 > p_num2.
+    IF p_num4 > p_num3.
+      IF p_num4 > p_num1.
+        IF p_num4 > p_num5.
+          v_rst_ma = p_num4.
+          MESSAGE i010(z35) WITH v_rst_ma.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num5 > p_num2.
+    IF p_num5 > p_num3.
+      IF p_num5 > p_num4.
+        IF p_num5 > p_num1.
+          v_rst_ma = p_num5.
+          MESSAGE i010(z35) WITH v_rst_ma.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  F_MENOR_NUM
+*&---------------------------------------------------------------------*
+*       Menor Número
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_menor_num .
+  IF p_num1 < p_num2.
+    IF p_num1 < p_num3.
+      IF p_num1 < p_num4.
+        IF p_num1 < p_num5.
+          v_rst_me = p_num1.
+          MESSAGE i022(z35) WITH v_rst_me.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num2 < p_num1.
+    IF p_num2 < p_num3.
+      IF p_num2 < p_num4.
+        IF p_num2 < p_num5.
+          v_rst_me = p_num2.
+          MESSAGE i022(z35) WITH v_rst_me.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num3 < p_num2.
+    IF p_num3 < p_num1.
+      IF p_num3 < p_num4.
+        IF p_num3 < p_num5.
+          v_rst_me = p_num3.
+          MESSAGE i022(z35) WITH v_rst_me.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num4 < p_num2.
+    IF p_num4 < p_num3.
+      IF p_num4 < p_num1.
+        IF p_num4 < p_num5.
+          v_rst_me = p_num4.
+          MESSAGE i022(z35) WITH v_rst_me.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+  IF p_num5 < p_num2.
+    IF p_num5 < p_num3.
+      IF p_num5 < p_num4.
+        IF p_num5 < p_num1.
+          v_rst_me = p_num5.
+          MESSAGE i022(z35) WITH v_rst_me.
+        ENDIF.
+      ENDIF.
+    ENDIF.
+  ENDIF.
+ENDFORM.
+*&---------------------------------------------------------------------*
+*&      Form  F_MED_PAR
+*&---------------------------------------------------------------------*
+*       Media Pares.
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM f_med_par .
+  IF p_num1 MOD 2 EQ 0.
+    v_cont = v_cont + p_num1.
+    v_cont2 = v_cont2 + 1.
+  ENDIF.
+  IF p_num2 MOD 2 EQ 0.
+    v_cont = v_cont + p_num2.
+    v_cont2 = v_cont2 + 1.
+  ENDIF.
+  IF p_num3 MOD 2 EQ 0.
+    v_cont = v_cont + p_num3.
+    v_cont2 = v_cont2 + 1.
+  ENDIF.
+  IF p_num4 MOD 2 EQ 0.
+    v_cont = v_cont + p_num4.
+    v_cont2 = v_cont2 + 1.
+  ENDIF.
+  IF p_num5 MOD 2 EQ 0.
+    v_cont = v_cont + p_num5.
+    v_cont2 = v_cont2 + 1.
+  ENDIF.
+ENDFORM.
