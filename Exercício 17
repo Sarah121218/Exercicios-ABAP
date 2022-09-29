@@ -1,0 +1,13 @@
+REPORT zz_exerc17_35.
+
+DATA: v_num TYPE i VALUE 100.
+
+
+START-OF-SELECTION.
+
+  WHILE v_num <= 200.
+    IF v_num MOD 2 EQ 1.
+      WRITE: v_num.
+    ENDIF.
+    v_num = v_num + 1.
+  ENDWHILE.
