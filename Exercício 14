@@ -1,0 +1,33 @@
+REPORT zz_exerc14_35.
+
+DATA: v_cont  TYPE i,
+      v_cont2 TYPE i.
+
+PARAMETERS: p_num1 TYPE i OBLIGATORY,
+            p_num2 TYPE i OBLIGATORY.
+
+START-OF-SELECTION.
+
+  IF p_num1 < p_num2.
+    v_cont = p_num1.
+    v_cont2 = p_num2.
+    WHILE v_cont <= p_num2.
+      WRITE v_cont.
+      v_cont = v_cont + 1.
+    ENDWHILE.
+    WHILE v_cont2 >= p_num1.
+      WRITE v_cont2.
+      v_cont2 = v_cont2 - 1.
+    ENDWHILE.
+  ELSEIF p_num2 < p_num1.
+    v_cont = p_num2.
+    v_cont2 = p_num1.
+    WHILE v_cont <= p_num1.
+      WRITE v_cont.
+      v_cont = v_cont + 1.
+    ENDWHILE.
+    WHILE v_cont2 >= p_num2.
+      WRITE v_cont2.
+      v_cont2 = v_cont2 - 1.
+    ENDWHILE.
+  ENDIF.
